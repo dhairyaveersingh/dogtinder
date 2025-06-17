@@ -13,6 +13,10 @@ app.use(express.json());
 const authRoutes = require('./routes/auth');
 app.use('/api/auth', authRoutes);
 
+// match routes
+const matchRoutes = require('./routes/match');
+app.use('/api/match', matchRoutes);
+
 // pet routes
 const petRoutes = require('./routes/pets');
 app.use('/api/pets', petRoutes);

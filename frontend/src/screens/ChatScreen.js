@@ -10,9 +10,10 @@ const ChatScreen = ({ route }) => {
   const [content, setContent] = useState('');
 
   useEffect(() => {
+    
     const setupSocket = async () => {
       const token = await AsyncStorage.getItem('userJwtToken');
-      const socket = connectSocket(token);
+      const socket = connectSocket(token); 
 
       socket.emit('joinRoom', { roomId });
 

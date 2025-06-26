@@ -14,7 +14,7 @@ const ChatScreen = ({ route }) => {
     const setupSocket = async () => {
       const token = await AsyncStorage.getItem('userJwtToken');
       const socket = connectSocket(token); 
-///]
+
       socket.emit('joinRoom', { roomId });
 
       socket.on('chatHistory', (history) => {

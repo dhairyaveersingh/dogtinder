@@ -9,18 +9,10 @@ import LoginScreen from './src/screens/LoginScreen';
 import RegisterScreen from './src/screens/RegisterScreen';
 import AddPetScreen from './src/screens/AddPetScreen';
 import ChatScreen from './src/screens/ChatScreen';
+import PetBrowsingScreen from './src/screens/PetBrowsingScreen'; // NEW IMPORT
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
-
-const HomeScreen = () => {
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#f5f5f5' }}>
-      <Text style={{ fontSize: 24, fontWeight: 'bold', color: '#333' }}>🏠 Pet Discovery</Text>
-      <Text style={{ fontSize: 16, color: '#666', marginTop: 10 }}>Coming soon: Browse pets near you!</Text>
-    </View>
-  );
-};
 
 function MainTabs() {
   return (
@@ -31,9 +23,12 @@ function MainTabs() {
       }}
     >
       <Tab.Screen
-        name="Home"
-        component={HomeScreen}
-        options={{ tabBarLabel: '🏠 Browse' }}
+        name="Browse"
+        component={PetBrowsingScreen} // CHANGED FROM HomeScreen
+        options={{
+          tabBarLabel: '🐾 Browse',
+          headerShown: false
+        }}
       />
       <Tab.Screen
         name="Add Pet"

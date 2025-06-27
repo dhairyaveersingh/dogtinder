@@ -1,4 +1,4 @@
-# 🐕 DogTinder - Pet Dating App
+# 🐕 Paws - Pet Dating App
 
 
 
@@ -323,5 +323,5 @@ If you have any questions or run into issues:
 
 **Made with ❤️ for pet lovers everywhere**
 
-[⬆ Back to Top](#-dogtinder---pet-dating-app)
+[⬆ Back to Top](#-Paws---pet-dating-app)
 

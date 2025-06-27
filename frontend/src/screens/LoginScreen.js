@@ -32,8 +32,13 @@ const LoginScreen = ({ navigation }) => {
         connectSocket(data.token);
         console.log('Socket connected after login');
 
-        // Navigate to main app
-        navigation.navigate('MainTabs');
+        // CHANGED: Use the function passed from App.tsx instead of navigation.navigate
+        if (typeof navigation.navigate === 'function') {
+          navigation.navigate(); // This calls handleLogin from App.tsx
+        } else {
+          // Fallback for the simplified navigation
+          navigation.navigate('browse');
+        }
       } else {
         Alert.alert('Login Failed', data.message || 'Invalid credentials');
       }
@@ -79,7 +84,7 @@ const LoginScreen = ({ navigation }) => {
         </Text>
       </TouchableOpacity>
 
-      <TouchableOpacity onPress={() => navigation.navigate('Register')}>
+      <TouchableOpacity onPress={() => navigation.navigate('register')}>
         <Text style={styles.linkText}>Don't have an account? Register</Text>
       </TouchableOpacity>
     </View>

@@ -17,7 +17,7 @@ const RegisterScreen = ({ navigation }) => {
       const data = await response.json();
       if (response.ok) {
         Alert.alert('Success', 'Account created successfully');
-        navigation.navigate('Login');
+        navigation.navigate('login');
       } else {
         Alert.alert('Error', data.message);
       }
@@ -52,7 +52,7 @@ const RegisterScreen = ({ navigation }) => {
       <TouchableOpacity style={styles.button} onPress={handleRegister}>
         <Text style={styles.buttonText}>Create Account</Text>
       </TouchableOpacity>
-      <TouchableOpacity onPress={() => navigation.navigate('Login')}>
+      <TouchableOpacity onPress={() => navigation.navigate('login')}>
         <Text style={styles.linkText}>Already have an account? Login</Text>
       </TouchableOpacity>
     </View>

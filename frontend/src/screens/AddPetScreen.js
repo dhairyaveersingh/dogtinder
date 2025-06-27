@@ -36,7 +36,7 @@ const AddPetScreen = ({ navigation }) => {
       const data = await response.json();
       if (response.ok) {
         Alert.alert('Success', `${name} has been added to your profile!`);
-        navigation.navigate('Home');
+        navigation.navigate('browse');
       } else {
         Alert.alert('Error', data.message);
       }

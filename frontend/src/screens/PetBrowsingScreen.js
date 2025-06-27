@@ -56,6 +56,17 @@ const PetBrowsingScreen = ({ navigation }) => {
   };
 
   const renderCard = (pet, index) => {
+    // Add null/undefined check
+    if (!pet) {
+      return (
+        <View style={styles.card}>
+          <View style={styles.cardInfo}>
+            <Text style={styles.petName}>Loading...</Text>
+          </View>
+        </View>
+      );
+    }
+
     return (
       <View style={styles.card}>
         <View style={styles.cardImageContainer}>
@@ -68,27 +79,34 @@ const PetBrowsingScreen = ({ navigation }) => {
         </View>
 
         <View style={styles.cardInfo}>
-          <Text style={styles.petName}>{pet.name}</Text>
+          <Text style={styles.petName}>{pet.name || 'Unknown Pet'}</Text>
           <Text style={styles.petDetails}>
-            {pet.breed} • {pet.age} years old
+            {pet.breed || 'Unknown breed'} • {pet.age || 'Unknown'} years old
           </Text>
-          <Text style={styles.petSpecies}>🐾 {pet.species}</Text>
+          <Text style={styles.petSpecies}>🐾 {pet.species || 'Unknown species'}</Text>
 
           <View style={styles.intentionsContainer}>
-            {pet.intentions?.map((intention, idx) => (
-              <View key={idx} style={styles.intentionTag}>
-                <Text style={styles.intentionText}>
-                  {intention === 'playdate' ? '🎾 Playdate' :
-                   intention === 'mating' ? '💕 Mating' :
-                   '🏠 Adoption'}
-                </Text>
+            {pet.intentions && pet.intentions.length > 0 ? (
+              pet.intentions.map((intention, idx) => (
+                <View key={idx} style={styles.intentionTag}>
+                  <Text style={styles.intentionText}>
+                    {intention === 'playdate' ? '🎾 Playdate' :
+                     intention === 'mating' ? '💕 Mating' :
+                     '🏠 Adoption'}
+                  </Text>
+                </View>
+              ))
+            ) : (
+              <View style={styles.intentionTag}>
+                <Text style={styles.intentionText}>🎾 Playdate</Text>
               </View>
-            ))}
+            )}
           </View>
         </View>
       </View>
     );
   };
+
 
   const renderNoMoreCards = () => {
     return (
